@@ -4,7 +4,7 @@ import sqlite3
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text)")
+cursor.execute("CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
 cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger)")
 
 
@@ -51,9 +51,9 @@ def cadastrar_usuario():
     numero = cadastro.cadastro_numero.text()
     email = cadastro.cadastro_email.text()
     endereco = cadastro.cadastro_endereco.text()
+    senha = cadastro.cadastro_senha.text()
 
-    cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(
-        numero) + ",'" + email + "','" + endereco + "')")
+    cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(numero) + ",'" + email + "','" + endereco + "','"+str(senha)+"')")
     banco.commit()
 
 
