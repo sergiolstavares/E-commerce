@@ -4,8 +4,10 @@ import sqlite3
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
+cursor.execute(
+    "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
 cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger)")
+cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text)")
 
 
 def voltar_pro_login():  # função para voltar pro login de qualquer tela
@@ -32,8 +34,27 @@ def area_vendedor():  # função para entrar na tela do vendedor
 
 
 def logar():  # função para entrar na tela principal da loja e fechar o login
-    login.close()
-    tela_principal.show()
+    login_digitado = login.login_input.text()
+    senha_digitado = login.senha_input.text()
+
+    puxar_dados = 'SELECT * FROM usuarios WHERE email =? and senha= ?'
+
+    for usuario in cursor.execute(puxar_dados, (login_digitado, senha_digitado)):
+        print(f"Usúario:{usuario[0]}\n"
+              f"Cpf:{usuario[1]}\n"
+              f"Telefone:{usuario[2]}\n"
+              f"Email:{usuario[3]}\n"
+              f"Endereço:{usuario[4]}\n"
+              f"Senha:{usuario[5]}")
+
+        if usuario[3] == login_digitado and usuario[5] == senha_digitado:
+            login.close()
+            tela_principal.show()
+        else:
+            print("Usúario ou senha incorreta")
+            login.msg_error.setText("Usúario ou senha incorreta")
+
+
 
 
 def cadastrar_produto():
@@ -43,6 +64,10 @@ def cadastrar_produto():
 
     cursor.execute("INSERT INTO produtos VALUES(" + str(id) + ",'" + nome + "'," + str(valor) + ")")
     banco.commit()
+    cadastro_produto.produto_id.setText("")
+    cadastro_produto.produto_nome.setText("")
+    cadastro_produto.produto_valor.setText("")
+    print("Produto cadastrado")
 
 
 def cadastrar_usuario():
@@ -53,8 +78,20 @@ def cadastrar_usuario():
     endereco = cadastro.cadastro_endereco.text()
     senha = cadastro.cadastro_senha.text()
 
-    cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(numero) + ",'" + email + "','" + endereco + "','"+str(senha)+"')")
+    cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(
+        numero) + ",'" + email + "','" + endereco + "','" + str(senha) + "')")
     banco.commit()
+
+    cadastro.cadastro_nome.setText("")
+    cadastro.cadastro_cpf.setText("")
+    cadastro.cadastro_numero.setText("")
+    cadastro.cadastro_email.setText("")
+    cadastro.cadastro_endereco.setText("")
+    cadastro.cadastro_senha.setText("")
+
+    print("Usuario cadastrado")
+    cadastro.close()
+    login.show()
 
 
 def verificar_vendedor():
@@ -86,6 +123,7 @@ tela_principal.botao_sair.clicked.connect(voltar_pro_login)
 cadastro.botao_cadastrar.clicked.connect(cadastrar_usuario)
 cadastro_produto.botao_cadastrar_produto.clicked.connect(cadastrar_produto)
 vendedor.botao_vendedor.clicked.connect(verificar_vendedor)
+
 login.show()
 
 app.exec()
