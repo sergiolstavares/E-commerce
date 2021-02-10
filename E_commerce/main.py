@@ -4,9 +4,8 @@ import sqlite3
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
-cursor.execute(
-    "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
-cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger)")
+cursor.execute("CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
+cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger)")
 cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text)")
 
 
@@ -34,12 +33,14 @@ def area_vendedor():  # função para entrar na tela do vendedor
 
 
 def logar():  # função para entrar na tela principal da loja e fechar o login
+
     login_digitado = login.login_input.text()
     senha_digitado = login.senha_input.text()
 
-    puxar_dados = 'SELECT * FROM usuarios WHERE email =? and senha= ?'
+    puxar_dados = 'SELECT * FROM usuarios WHERE email =? and senha= ?'  # comando para puxar do banco o email e a senha
 
     for usuario in cursor.execute(puxar_dados, (login_digitado, senha_digitado)):
+        print("")
         print(f"Usúario:{usuario[0]}\n"
               f"Cpf:{usuario[1]}\n"
               f"Telefone:{usuario[2]}\n"
@@ -47,26 +48,40 @@ def logar():  # função para entrar na tela principal da loja e fechar o login
               f"Endereço:{usuario[4]}\n"
               f"Senha:{usuario[5]}")
 
-        if usuario[3] == login_digitado and usuario[5] == senha_digitado:
-            login.close()
-            tela_principal.show()
-        else:
+        try:
+            if usuario[3] == login_digitado and usuario[5] == senha_digitado:  # compara a senha/login digitados com senha/login do banco
+                puxar_produtos()
+                login.close()
+
+        except:
             print("Usúario ou senha incorreta")
             login.msg_error.setText("Usúario ou senha incorreta")
 
 
+def puxar_produtos():
+    tela_principal.show()
+    cursor.execute("SELECT * FROM produtos")
+    produtos_lidos = cursor.fetchall()
+    tela_principal.lista_produtos.setRowCount(len(produtos_lidos))
+    tela_principal.lista_produtos.setColumnCount(4)
+
+    for i in range(0, len(produtos_lidos)):
+        for j in range(0,4):
+            tela_principal.lista_produtos.setItem(i,j,QtWidgets.QTableWidgetItem(str(produtos_lidos[i][j])))
 
 
 def cadastrar_produto():
     id = cadastro_produto.produto_id.text()
     nome = cadastro_produto.produto_nome.text()
     valor = cadastro_produto.produto_valor.text()
+    qtd = cadastro_produto.produto_qtd.text()
 
-    cursor.execute("INSERT INTO produtos VALUES(" + str(id) + ",'" + nome + "'," + str(valor) + ")")
+    cursor.execute("INSERT INTO produtos VALUES(" + str(id) + ",'" + nome + "'," + str(valor) + ", "+str(qtd)+")")
     banco.commit()
     cadastro_produto.produto_id.setText("")
     cadastro_produto.produto_nome.setText("")
     cadastro_produto.produto_valor.setText("")
+    cadastro_produto.produto_qtd.setText("")
     print("Produto cadastrado")
 
 
