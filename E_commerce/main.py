@@ -1,6 +1,5 @@
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtWidgets import QToolButton
-import background
 import sqlite3
 
 banco = sqlite3.connect("e_commerce.db")
