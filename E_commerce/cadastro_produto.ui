@@ -26,8 +26,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>40</y>
+      <x>220</x>
+      <y>0</y>
       <width>371</width>
       <height>41</height>
      </rect>
@@ -51,9 +51,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>150</y>
-      <width>131</width>
+      <x>390</x>
+      <y>60</y>
+      <width>21</width>
       <height>16</height>
      </rect>
     </property>
@@ -67,14 +67,14 @@
 color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
-     <string>ID do Produto:</string>
+     <string>ID </string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>190</y>
+      <x>320</x>
+      <y>120</y>
       <width>161</width>
       <height>16</height>
      </rect>
@@ -88,14 +88,14 @@ color: rgb(85, 255, 255);</string>
      <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Nome do Produto:</string>
+     <string>Nome do Produto</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>230</y>
+      <x>320</x>
+      <y>200</y>
       <width>161</width>
       <height>16</height>
      </rect>
@@ -109,52 +109,52 @@ color: rgb(85, 255, 255);</string>
      <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Valor do Produto:</string>
+     <string>Valor do Produto</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="produto_id">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>150</y>
-      <width>113</width>
-      <height>20</height>
+      <x>320</x>
+      <y>80</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(68, 68, 68);
-border-radius:10px</string>
+border-radius:15px</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="produto_nome">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>190</y>
-      <width>113</width>
-      <height>20</height>
+      <x>320</x>
+      <y>150</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(68, 68, 68);
-border-radius:10px</string>
+border-radius:15px</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="produto_valor">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>320</x>
       <y>230</y>
-      <width>113</width>
-      <height>20</height>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(68, 68, 68);
-border-radius:10px</string>
+border-radius:15px</string>
     </property>
     <property name="text">
      <string/>
@@ -163,14 +163,14 @@ border-radius:10px</string>
    <widget class="QPushButton" name="botao_cadastrar_produto">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>320</y>
-      <width>151</width>
+      <x>350</x>
+      <y>340</y>
+      <width>101</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius:15px;
+     <string notr="true">border-radius:16px;
 color: rgb(0, 0, 0);
 background-color: rgb(85, 255, 255);</string>
     </property>
@@ -182,9 +182,9 @@ background-color: rgb(85, 255, 255);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>352</y>
       <width>75</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -199,8 +199,8 @@ background-color: rgb(85, 255, 255);</string>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>271</y>
+      <x>330</x>
+      <y>270</y>
       <width>141</width>
       <height>20</height>
      </rect>
@@ -214,22 +214,22 @@ background-color: rgb(85, 255, 255);</string>
      <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Qtd. Disponível:</string>
+     <string>Qtd. Disponível</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="produto_qtd">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>270</y>
-      <width>113</width>
-      <height>20</height>
+      <x>320</x>
+      <y>300</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(68, 68, 68);
-border-radius:10px</string>
+border-radius:15px</string>
     </property>
     <property name="text">
      <string/>
