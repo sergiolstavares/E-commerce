@@ -14,7 +14,7 @@
    <string>Área do vendedor</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/newPrefix/back.jpg);</string>
+   <string notr="true">background-color: rgb(31, 31, 31);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -44,7 +44,7 @@
       <x>140</x>
       <y>100</y>
       <width>81</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -65,10 +65,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);
+background-color: rgb(67, 67, 67);
+border-radius:10px</string>
     </property>
    </widget>
-   <widget class="QCommandLinkButton" name="botao_vendedor">
+   <widget class="QPushButton" name="botao_vendedor">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -78,7 +81,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(85, 255, 255);
+border-radius:15px</string>
     </property>
     <property name="text">
      <string>Entrar</string>

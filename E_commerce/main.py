@@ -1,12 +1,14 @@
 from PyQt5 import uic, QtWidgets
+from PyQt5.QtWidgets import QToolButton
 import background
 import sqlite3
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text)")
-cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger)")
-cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text)")
+cursor.execute(
+    "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text,UNIQUE(email))")
+cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger, UNIQUE(id))")
+cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text, UNIQUE(cpf))")
 
 
 def voltar_pro_login():  # função para voltar pro login de qualquer tela
@@ -48,12 +50,12 @@ def logar():  # função para entrar na tela principal da loja e fechar o login
               f"Endereço:{usuario[4]}\n"
               f"Senha:{usuario[5]}")
 
-        try:
-            if usuario[3] == login_digitado and usuario[5] == senha_digitado:  # compara a senha/login digitados com senha/login do banco
-                puxar_produtos()
-                login.close()
+        if usuario[3] == login_digitado and usuario[
+            5] == senha_digitado:  # compara a senha/login digitados com senha/login do banco
+            puxar_produtos()  # Puxa os produtos cadastrados e mostra na tela principal
+            login.close()
 
-        except:
+        else:
             print("Usúario ou senha incorreta")
             login.msg_error.setText("Usúario ou senha incorreta")
 
@@ -66,48 +68,58 @@ def puxar_produtos():
     tela_principal.lista_produtos.setColumnCount(4)
 
     for i in range(0, len(produtos_lidos)):
-        for j in range(0,4):
-            tela_principal.lista_produtos.setItem(i,j,QtWidgets.QTableWidgetItem(str(produtos_lidos[i][j])))
+        for j in range(0, 4):
+            tela_principal.lista_produtos.setItem(i, j, QtWidgets.QTableWidgetItem(str(produtos_lidos[i][j])))
 
 
 def cadastrar_produto():
-    id = cadastro_produto.produto_id.text()
-    nome = cadastro_produto.produto_nome.text()
-    valor = cadastro_produto.produto_valor.text()
-    qtd = cadastro_produto.produto_qtd.text()
+    try:
+        id = cadastro_produto.produto_id.text()
+        nome = cadastro_produto.produto_nome.text()
+        valor = cadastro_produto.produto_valor.text()
+        qtd = cadastro_produto.produto_qtd.text()
 
-    cursor.execute("INSERT INTO produtos VALUES(" + str(id) + ",'" + nome + "'," + str(valor) + ", "+str(qtd)+")")
-    banco.commit()
-    cadastro_produto.produto_id.setText("")
-    cadastro_produto.produto_nome.setText("")
-    cadastro_produto.produto_valor.setText("")
-    cadastro_produto.produto_qtd.setText("")
-    print("Produto cadastrado")
+        cursor.execute(
+            "INSERT INTO produtos VALUES(" + str(id) + ",'" + nome + "'," + str(valor) + ", " + str(qtd) + ")")
+        banco.commit()
+
+        cadastro_produto.produto_id.setText("")
+        cadastro_produto.produto_nome.setText("")
+        cadastro_produto.produto_valor.setText("")
+        cadastro_produto.produto_qtd.setText("")
+        print("Produto cadastrado")
+    except:
+        print("Produto ja cadastrado")
 
 
 def cadastrar_usuario():
-    nome = cadastro.cadastro_nome.text()
-    cpf = cadastro.cadastro_cpf.text()
-    numero = cadastro.cadastro_numero.text()
-    email = cadastro.cadastro_email.text()
-    endereco = cadastro.cadastro_endereco.text()
-    senha = cadastro.cadastro_senha.text()
 
-    cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(
-        numero) + ",'" + email + "','" + endereco + "','" + str(senha) + "')")
-    banco.commit()
+    try:
+        nome = cadastro.cadastro_nome.text()
+        cpf = cadastro.cadastro_cpf.text()
+        numero = cadastro.cadastro_numero.text()
+        email = cadastro.cadastro_email.text()
+        endereco = cadastro.cadastro_endereco.text()
+        senha = cadastro.cadastro_senha.text()
 
-    cadastro.cadastro_nome.setText("")
-    cadastro.cadastro_cpf.setText("")
-    cadastro.cadastro_numero.setText("")
-    cadastro.cadastro_email.setText("")
-    cadastro.cadastro_endereco.setText("")
-    cadastro.cadastro_senha.setText("")
+        cursor.execute("INSERT INTO usuarios VALUES ('" + nome + "'," + str(cpf) + "," + str(
+            numero) + ",'" + email + "','" + endereco + "','" + str(senha) + "')")
+        banco.commit()
 
-    print("Usuario cadastrado")
-    cadastro.close()
-    login.show()
+        cadastro.cadastro_nome.setText("")
+        cadastro.cadastro_cpf.setText("")
+        cadastro.cadastro_numero.setText("")
+        cadastro.cadastro_email.setText("")
+        cadastro.cadastro_endereco.setText("")
+        cadastro.cadastro_senha.setText("")
 
+        print("Usuario cadastrado")
+        cadastro.close()
+        login.show()
+    except:
+        print("Usuario ja cadastrado")
+        cadastro.close()
+        login.show()
 
 def verificar_vendedor():
     cod_vendedor = "157"

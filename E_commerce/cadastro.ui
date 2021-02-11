@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/newPrefix/back.jpg);</string>
+   <string notr="true">background-color: rgb(31, 31, 31);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -153,7 +153,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+border-radius:10px;
+background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_cpf">
@@ -166,7 +168,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+border-radius:10px;
+background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_numero">
@@ -179,7 +183,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);border-radius:10px;background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_email">
@@ -192,7 +196,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);border-radius:10px;background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_endereco">
@@ -205,10 +209,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);border-radius:10px;background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
-   <widget class="QCommandLinkButton" name="botao_cadastrar">
+   <widget class="QPushButton" name="botao_cadastrar">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -218,13 +222,15 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(85, 255, 255);
+border-radius:15px</string>
     </property>
     <property name="text">
      <string>Cadastrar</string>
     </property>
    </widget>
-   <widget class="QCommandLinkButton" name="botao_ja_possuo_cadastro">
+   <widget class="QPushButton" name="botao_ja_possuo_cadastro">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -234,7 +240,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
+     <string notr="true">background-color: rgb(85, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:15px</string>
     </property>
     <property name="text">
      <string>Já possuo cadastro!</string>
@@ -248,6 +256,9 @@
       <width>113</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);border-radius:10px;background-color: rgb(116, 116, 116);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">

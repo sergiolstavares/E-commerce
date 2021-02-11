@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>692</width>
+    <width>693</width>
     <height>307</height>
    </rect>
   </property>
@@ -19,11 +19,14 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="windowOpacity">
+   <double>100000000.000000000000000</double>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/newPrefix/back.jpg);</string>
+   <string notr="true">background-color: rgb(31, 31, 31);</string>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
@@ -47,7 +50,7 @@
      <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Login:</string>
+     <string>Email:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -79,12 +82,19 @@
      <rect>
       <x>310</x>
       <y>150</y>
-      <width>113</width>
-      <height>20</height>
+      <width>121</width>
+      <height>21</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(116, 116, 116);
+border-radius:10px</string>
     </property>
     <property name="inputMask">
      <string comment="*"/>
@@ -126,78 +136,29 @@ color: rgb(85, 255, 255);</string>
      <string>ST Shop</string>
     </property>
    </widget>
-   <widget class="QCommandLinkButton" name="botao_entrar">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>190</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Entrar</string>
-    </property>
-   </widget>
-   <widget class="QCommandLinkButton" name="commandLinkButton_2">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>260</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Cadastrar</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="login_input">
     <property name="geometry">
      <rect>
       <x>310</x>
       <y>120</y>
-      <width>113</width>
-      <height>20</height>
+      <width>121</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-   </widget>
-   <widget class="QCommandLinkButton" name="btn_vendedor">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>260</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(85, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Vendedor</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(116, 116, 116);
+border-color:  rgb(116, 116, 116);
+
+border-radius:10px
+</string>
     </property>
    </widget>
    <widget class="QLabel" name="msg_error">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>230</y>
+      <x>210</x>
+      <y>240</y>
       <width>321</width>
       <height>31</height>
      </rect>
@@ -208,12 +169,102 @@ color: rgb(85, 255, 255);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
+     <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="botao_entrar">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>192</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 255, 255);
+border-radius: 15px</string>
+    </property>
+    <property name="text">
+     <string>Entrar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="commandLinkButton_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>270</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 255, 255);
+border-radius:15px</string>
+    </property>
+    <property name="text">
+     <string>cadastrar</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_vendedor">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 255, 255);
+border-radius:15px</string>
+    </property>
+    <property name="text">
+     <string>Vendedor</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>commandLinkButton_2</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>msg_error</zorder>
+   <zorder>login_input</zorder>
+   <zorder>senha_input</zorder>
+   <zorder>btn_vendedor</zorder>
+   <zorder>botao_entrar</zorder>
   </widget>
  </widget>
  <resources/>
