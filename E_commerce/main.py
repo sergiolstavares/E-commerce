@@ -1,12 +1,12 @@
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtWidgets import QToolButton
 import sqlite3
+
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text,UNIQUE(email))")
-cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger, UNIQUE(id))")
+cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger,UNIQUE(id))")
 cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text, UNIQUE(cpf))")
 
 
@@ -14,6 +14,7 @@ def voltar_pro_login():  # função para voltar pro login de qualquer tela
     cadastro.close()
     cadastro_produto.close()
     tela_principal.close()
+    tela_principal.lista_carrinho.clear()
     login.show()
 
 
@@ -54,6 +55,7 @@ def logar():  # função para entrar na tela principal da loja e fechar o login
             puxar_produtos()  # Puxa os produtos cadastrados e mostra na tela principal
             login.close()
 
+
         else:
             print("Usúario ou senha incorreta")
             login.msg_error.setText("Usúario ou senha incorreta")
@@ -69,6 +71,24 @@ def puxar_produtos():
     for i in range(0, len(produtos_lidos)):
         for j in range(0, 4):
             tela_principal.lista_produtos.setItem(i, j, QtWidgets.QTableWidgetItem(str(produtos_lidos[i][j])))
+
+
+def adicionar_carrinho():
+
+    linha_atual = tela_principal.lista_produtos.currentRow()
+    cursor.execute("SELECT id FROM produtos")
+    dados_lidos = cursor.fetchall()
+    valor_id = dados_lidos[linha_atual][0]
+    cursor.execute("SELECT nome,valor FROM produtos WHERE id="+str(valor_id))
+    produto = cursor.fetchall()
+    produto_format = format(f" Produto: {produto[0][0]} |  Valor: R$ {produto[0][1]}")
+    print(produto_format)
+
+    tela_principal.lista_carrinho.addItem(produto_format)
+
+
+
+
 
 
 def cadastrar_produto():
@@ -92,7 +112,6 @@ def cadastrar_produto():
 
 
 def cadastrar_usuario():
-
     try:
         nome = cadastro.cadastro_nome.text()
         cpf = cadastro.cadastro_cpf.text()
@@ -119,6 +138,7 @@ def cadastrar_usuario():
         print("Usuario ja cadastrado")
         cadastro.close()
         login.show()
+
 
 def verificar_vendedor():
     cod_vendedor = "157"
@@ -149,7 +169,8 @@ tela_principal.botao_sair.clicked.connect(voltar_pro_login)
 cadastro.botao_cadastrar.clicked.connect(cadastrar_usuario)
 cadastro_produto.botao_cadastrar_produto.clicked.connect(cadastrar_produto)
 vendedor.botao_vendedor.clicked.connect(verificar_vendedor)
+tela_principal.btn_adicionar_ao_carrinho.clicked.connect(adicionar_carrinho)
+
 
 login.show()
-
 app.exec()

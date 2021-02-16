@@ -157,6 +157,9 @@
 border-radius:14px;
 background-color: rgb(116, 116, 116);</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_cpf">
     <property name="geometry">
@@ -172,6 +175,9 @@ background-color: rgb(116, 116, 116);</string>
 border-radius:14px;
 background-color: rgb(116, 116, 116);</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_numero">
     <property name="geometry">
@@ -184,6 +190,9 @@ background-color: rgb(116, 116, 116);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);border-radius:14px;background-color: rgb(116, 116, 116);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_email">
@@ -198,6 +207,9 @@ background-color: rgb(116, 116, 116);</string>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);border-radius:14px;background-color: rgb(116, 116, 116);</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="cadastro_endereco">
     <property name="geometry">
@@ -210,6 +222,9 @@ background-color: rgb(116, 116, 116);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);border-radius:14px;background-color: rgb(116, 116, 116);</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="botao_cadastrar">
@@ -259,6 +274,12 @@ border-radius:20px</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);border-radius:14px;background-color: rgb(116, 116, 116);</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">

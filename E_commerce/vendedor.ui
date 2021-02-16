@@ -70,6 +70,12 @@ color: rgb(255, 255, 255);
 background-color: rgb(67, 67, 67);
 border-radius:10px</string>
     </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="botao_vendedor">
     <property name="geometry">

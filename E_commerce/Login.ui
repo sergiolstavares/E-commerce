@@ -89,6 +89,7 @@
     <property name="font">
      <font>
       <pointsize>8</pointsize>
+      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="styleSheet">
@@ -96,11 +97,14 @@
 background-color: rgb(116, 116, 116);
 border-radius:10px</string>
     </property>
-    <property name="inputMask">
-     <string comment="*"/>
-    </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
     <property name="readOnly">
      <bool>false</bool>
@@ -152,6 +156,9 @@ border-color:  rgb(116, 116, 116);
 
 border-radius:10px
 </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="msg_error">

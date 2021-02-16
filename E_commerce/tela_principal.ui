@@ -118,8 +118,8 @@ background-color: rgb(31, 31, 31);</string>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>30</y>
+      <x>770</x>
+      <y>20</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -136,7 +136,7 @@ background-color: rgb(31, 31, 31);</string>
    <widget class="QPushButton" name="botao_finalizar_compra">
     <property name="geometry">
      <rect>
-      <x>950</x>
+      <x>960</x>
       <y>170</y>
       <width>101</width>
       <height>51</height>
@@ -184,13 +184,13 @@ border-radius:15px</string>
      </font>
     </property>
     <property name="text">
-     <string>1355</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="botao_sair">
     <property name="geometry">
      <rect>
-      <x>1010</x>
+      <x>990</x>
       <y>10</y>
       <width>71</width>
       <height>41</height>
@@ -205,36 +205,13 @@ border-radius:15px</string>
      <string>Sair!</string>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>70</y>
-      <width>291</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>289</width>
-       <height>89</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QTableWidget" name="lista_produtos">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>230</y>
-      <width>1031</width>
-      <height>591</height>
+      <x>10</x>
+      <y>240</y>
+      <width>1051</width>
+      <height>551</height>
      </rect>
     </property>
     <property name="font">
@@ -242,8 +219,16 @@ border-radius:15px</string>
       <pointsize>13</pointsize>
      </font>
     </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>true</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">
+color: rgb(85, 255, 255);
+</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAsNeeded</enum>
@@ -257,11 +242,23 @@ border-radius:15px</string>
     <property name="autoScroll">
      <bool>true</bool>
     </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="textElideMode">
+     <enum>Qt::ElideMiddle</enum>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashDotLine</enum>
+    </property>
     <property name="wordWrap">
      <bool>false</bool>
     </property>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>260</number>
+     <number>265</number>
     </attribute>
     <column>
      <property name="text">
@@ -271,6 +268,9 @@ border-radius:15px</string>
       <font>
        <pointsize>10</pointsize>
       </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
      </property>
      <property name="background">
       <color>
@@ -298,6 +298,9 @@ border-radius:15px</string>
        <pointsize>10</pointsize>
       </font>
      </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
+     </property>
      <property name="background">
       <color>
        <red>79</red>
@@ -323,6 +326,9 @@ border-radius:15px</string>
       <font>
        <pointsize>10</pointsize>
       </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
      </property>
      <property name="background">
       <color>
@@ -350,6 +356,9 @@ border-radius:15px</string>
        <pointsize>10</pointsize>
       </font>
      </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
+     </property>
      <property name="background">
       <color>
        <red>79</red>
@@ -367,6 +376,40 @@ border-radius:15px</string>
       </brush>
      </property>
     </column>
+   </widget>
+   <widget class="QPushButton" name="btn_adicionar_ao_carrinho">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>800</y>
+      <width>1051</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 255, 255);
+color: rgb(0, 0, 0);
+border-radius:15px</string>
+    </property>
+    <property name="text">
+     <string>Adicionar ao carrinho</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lista_carrinho">
+    <property name="geometry">
+     <rect>
+      <x>775</x>
+      <y>60</y>
+      <width>281</width>
+      <height>101</height>
+     </rect>
+    </property>
    </widget>
   </widget>
  </widget>
