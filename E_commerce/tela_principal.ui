@@ -56,10 +56,10 @@ background-color: rgb(31, 31, 31);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>121</width>
-      <height>31</height>
+      <x>10</x>
+      <y>0</y>
+      <width>221</width>
+      <height>211</height>
      </rect>
     </property>
     <property name="font">
@@ -73,10 +73,10 @@ background-color: rgb(31, 31, 31);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-image: url(:/newPrefix/logo.jpg);</string>
     </property>
     <property name="text">
-     <string>ST Shop</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -412,7 +412,7 @@ border-radius:15px</string>
   </widget>
  </widget>
  <resources>
-  <include location="../background/teste.qrc"/>
+  <include location="logo.qrc"/>
  </resources>
  <connections/>
 </ui>

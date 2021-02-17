@@ -1,5 +1,7 @@
 from PyQt5 import uic, QtWidgets
 import sqlite3
+import logo
+import logo2
 
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
@@ -96,15 +98,6 @@ def adicionar_carrinho():
     valor = sum(valor_total)
 
     tela_principal.mostrar_valor_total.setText(str(valor))
-
-
-
-
-
-
-
-
-
 
 
 def cadastrar_produto():
