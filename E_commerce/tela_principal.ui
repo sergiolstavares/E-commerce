@@ -57,9 +57,9 @@ background-color: rgb(31, 31, 31);</string>
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
-      <width>211</width>
-      <height>41</height>
+      <y>40</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -69,14 +69,14 @@ background-color: rgb(31, 31, 31);</string>
       <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
-      <underline>true</underline>
+      <underline>false</underline>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>LelaByteShop</string>
+     <string>ST Shop</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -101,9 +101,9 @@ background-color: rgb(31, 31, 31);</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>190</y>
+      <y>200</y>
       <width>251</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -172,10 +172,10 @@ border-radius:15px</string>
    <widget class="QLabel" name="mostrar_valor_total">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>770</x>
       <y>200</y>
-      <width>41</width>
-      <height>16</height>
+      <width>161</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -226,9 +226,7 @@ border-radius:15px</string>
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-color: rgb(85, 255, 255);
-</string>
+     <string notr="true">color: rgb(85, 255, 255);</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAsNeeded</enum>

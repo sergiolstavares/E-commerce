@@ -1,20 +1,23 @@
 from PyQt5 import uic, QtWidgets
 import sqlite3
 
-
 banco = sqlite3.connect("e_commerce.db")
 cursor = banco.cursor()
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text,UNIQUE(email))")
 cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger,UNIQUE(id))")
 cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text, UNIQUE(cpf))")
-
+valor_total = []
+produtos_add = []
 
 def voltar_pro_login():  # função para voltar pro login de qualquer tela
     cadastro.close()
     cadastro_produto.close()
     tela_principal.close()
     tela_principal.lista_carrinho.clear()
+    tela_principal.mostrar_valor_total.setText("0")
+    valor_total.clear()
+    produtos_add.clear()
     login.show()
 
 
@@ -63,6 +66,7 @@ def logar():  # função para entrar na tela principal da loja e fechar o login
 
 def puxar_produtos():
     tela_principal.show()
+    tela_principal.mostrar_valor_total.setText("0")
     cursor.execute("SELECT * FROM produtos")
     produtos_lidos = cursor.fetchall()
     tela_principal.lista_produtos.setRowCount(len(produtos_lidos))
@@ -79,12 +83,24 @@ def adicionar_carrinho():
     cursor.execute("SELECT id FROM produtos")
     dados_lidos = cursor.fetchall()
     valor_id = dados_lidos[linha_atual][0]
-    cursor.execute("SELECT nome,valor FROM produtos WHERE id="+str(valor_id))
+    cursor.execute("SELECT nome,valor FROM produtos WHERE id=" + str(valor_id))
     produto = cursor.fetchall()
     produto_format = format(f" Produto: {produto[0][0]} |  Valor: R$ {produto[0][1]}")
-    print(produto_format)
+    valor_total.append(float(produto[0][1]))
+    produtos_add.append(produto)
 
+    print(produto_format)
+    print(produtos_add)
     tela_principal.lista_carrinho.addItem(produto_format)
+
+    valor = sum(valor_total)
+
+    tela_principal.mostrar_valor_total.setText(str(valor))
+
+
+
+
+
 
 
 
@@ -170,7 +186,6 @@ cadastro.botao_cadastrar.clicked.connect(cadastrar_usuario)
 cadastro_produto.botao_cadastrar_produto.clicked.connect(cadastrar_produto)
 vendedor.botao_vendedor.clicked.connect(verificar_vendedor)
 tela_principal.btn_adicionar_ao_carrinho.clicked.connect(adicionar_carrinho)
-
 
 login.show()
 app.exec()
