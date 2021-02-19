@@ -11,6 +11,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valo
 cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text, UNIQUE(cpf))")
 valor_total = []
 produtos_add = []
+usuario_atual = []
 
 
 def voltar_pro_login():  # função para voltar pro login de qualquer tela
@@ -38,6 +39,7 @@ def area_vendedor():  # função para entrar na tela do vendedor
 
 def logar():  # função para entrar na tela principal da loja e fechar o login
 
+    global usuario, usuario_atual
     login_digitado = login.login_input.text()
     senha_digitado = login.senha_input.text()
 
@@ -55,10 +57,12 @@ def logar():  # função para entrar na tela principal da loja e fechar o login
         if usuario[3] == login_digitado and usuario[
             5] == senha_digitado:  # compara a senha/login digitados com senha/login do banco
             puxar_produtos()  # Puxa os produtos cadastrados e mostra na tela principal
+            usuario_atual.append(usuario)
             login.close()
         else:
             print("Usúario ou senha incorreta")
             login.msg_error.setText("Usúario ou senha incorreta")
+
 
 
 def puxar_produtos():
@@ -82,7 +86,8 @@ def adicionar_carrinho():
     cursor.execute("SELECT nome,valor,qtd FROM produtos WHERE id=" + str(valor_id))
     produto = cursor.fetchall()
     produto_format = format(f" Produto: {produto[0][0]} |  Valor: R$ {produto[0][1]}")
-    valor_total.append(float(produto[0][1]))  # adicionar o valor do produto adicionado ao carrinho na lista = valor_total
+    valor_total.append(
+        float(produto[0][1]))  # adicionar o valor do produto adicionado ao carrinho na lista = valor_total
     produtos_add.append(produto)
 
     print(produto_format)
@@ -90,7 +95,6 @@ def adicionar_carrinho():
     tela_principal.lista_carrinho.addItem(produto_format)
 
     valor = sum(valor_total)  # recebe a soma da lista valor_total
-
 
     qtd_int = int(produto[0][2]) - 1
     qtd_nova = str(qtd_int)
@@ -106,11 +110,28 @@ def finalizar_compra():
     puxar_produtos()
     tela_principal.lista_carrinho.clear()
     tela_principal.mostrar_valor_total.setText("R$ 0")
-    valor_total.clear()
-    produtos_add.clear()
 
     print("Compra Finalizada")
+    gerar_nota_fiscal()
+    usuario_atual.clear()
 
+
+
+def gerar_nota_fiscal():
+    nota_fiscal.nome_nota.setText(usuario_atual[0][0])
+    nota_fiscal.email_nota.setText(usuario_atual[0][3])
+    nota_fiscal.cpf_nota.setText(str(usuario_atual[0][1]))
+    nota_fiscal.contato_nota.setText(str(usuario_atual[0][2]))
+    nota_fiscal.total_nota.setText(str(sum(valor_total)))
+
+    for produto in produtos_add:
+        nota_fiscal.lista_produtos.addItem(str (format(f"      {produto[0][0]}                         {produto[0][1]}")))
+        print(f"{produto} adicionado")
+
+    tela_principal.close()
+    nota_fiscal.show()
+    valor_total.clear()
+    produtos_add.clear()
 
 def cadastrar_produto():
     try:
@@ -174,6 +195,7 @@ def verificar_vendedor():
 
 
 def sair():
+    usuario_atual.clear()
     exit()
 
 
@@ -183,7 +205,7 @@ cadastro = uic.loadUi("cadastro.ui")
 cadastro_produto = uic.loadUi("cadastro_produto.ui")
 tela_principal = uic.loadUi("tela_principal.ui")
 vendedor = uic.loadUi("vendedor.ui")
-
+nota_fiscal = uic.loadUi("nota_fiscal.ui")
 login.commandLinkButton_2.clicked.connect(chamar_cadastro)  # conectando os botões as respectivas funções
 cadastro.botao_ja_possuo_cadastro.clicked.connect(ja_possuo_cadastro)
 login.btn_vendedor.clicked.connect(area_vendedor)
