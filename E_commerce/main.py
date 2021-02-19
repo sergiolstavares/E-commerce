@@ -93,7 +93,6 @@ def adicionar_carrinho():
     print(produto_format)
     print(produtos_add)
     tela_principal.lista_carrinho.addItem(produto_format)
-
     valor = sum(valor_total)  # recebe a soma da lista valor_total
 
     qtd_int = int(produto[0][2]) - 1
