@@ -8,7 +8,6 @@ cursor = banco.cursor()
 cursor.execute(
     "CREATE TABLE IF NOT EXISTS usuarios(nome text,cpf interger,numero interger,email text,endereco text, senha text,UNIQUE(email))")
 cursor.execute("CREATE TABLE IF NOT EXISTS produtos(id interger, nome text, valor interger, qtd interger,UNIQUE(id))")
-cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (cpf interger, produto text, UNIQUE(cpf))")
 valor_total = []
 produtos_add = []
 usuario_atual = []
@@ -115,12 +114,19 @@ def finalizar_compra():
     usuario_atual.clear()
 
 
+def limpar_carrinho():
+    tela_principal.lista_carrinho.clear()
+    valor_total.clear()
+    produtos_add.clear()
+    tela_principal.mostrar_valor_total.setText("R$ 0")
+
 
 def gerar_nota_fiscal():
     nota_fiscal.nome_nota.setText(usuario_atual[0][0])
     nota_fiscal.email_nota.setText(usuario_atual[0][3])
     nota_fiscal.cpf_nota.setText(str(usuario_atual[0][1]))
     nota_fiscal.contato_nota.setText(str(usuario_atual[0][2]))
+    nota_fiscal.end_nota.setText(usuario_atual[0][4])
     nota_fiscal.total_nota.setText(str(sum(valor_total)))
 
     for produto in produtos_add:
@@ -216,6 +222,6 @@ cadastro_produto.botao_cadastrar_produto.clicked.connect(cadastrar_produto)
 vendedor.botao_vendedor.clicked.connect(verificar_vendedor)
 tela_principal.btn_adicionar_ao_carrinho.clicked.connect(adicionar_carrinho)
 tela_principal.botao_finalizar_compra.clicked.connect(finalizar_compra)
-
+tela_principal.limpar_carrinho.clicked.connect(limpar_carrinho)
 login.show()
 app.exec()

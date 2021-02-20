@@ -447,6 +447,25 @@ border-radius:15px</string>
      <string notr="true">border-radius:5px</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="limpar_carrinho">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>10</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 255, 255);
+font: 8pt &quot;DejaVu Sans&quot;;
+color: rgb(0, 0, 0);
+border-radius:15px</string>
+    </property>
+    <property name="text">
+     <string>Limpar carrinho</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
